@@ -1,0 +1,35 @@
+.pnf-module {
+  position: relative;
+
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .cover-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    .cover {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .texture {
+    width: 100%;
+    font-size: 32px;
+    text-align: center;
+  }
+}
+
+@media only screen and (min-width: 2560px) {
+  .pnf-module .texture {
+    font-size: 6em;
+  }
+}

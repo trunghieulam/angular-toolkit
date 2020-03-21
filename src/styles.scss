@@ -1,0 +1,40 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~ngx-toastr/toastr.css';
+
+/* Common */
+
+
+.noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.app-hidden {
+  display: none;
+}
+
+/* Reusable */
+
+/* Specific */
+
+.toast-success {
+  opacity: 1;
+}
+
+.toast-error {
+  opacity: 1;
+}
+
+body {
+  font-family: "Nunito";
+  color: #404040;
+  margin: 0;
+}
+
+
+/* Override */
+

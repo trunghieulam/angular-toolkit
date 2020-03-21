@@ -1,0 +1,14 @@
+{
+  "page-not-found": "Side ikke funnet.",
+  "home": {
+    "greeting": "Hilsen!",
+    "greeting.message": "Hei der!",
+    "write-your-application-here": "Skriv søknaden din her.",
+    "click-here": "Klikk her"
+  },
+  "lang": {
+    "en": "Engelsk",
+    "vi": "Vietnamesisk",
+    "no": "Norsk"
+  }
+}

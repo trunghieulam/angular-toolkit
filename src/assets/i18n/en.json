@@ -1,0 +1,14 @@
+{
+  "page-not-found": "Page not found.",
+  "home": {
+    "greeting": "Greeting!",
+    "greeting.message": "Hi there!",
+    "write-your-application-here": "Write your application here.",
+    "click-here": "Click here"
+  },
+  "lang": {
+    "en": "English",
+    "vi": "Vietnamese",
+    "no": "Norwegian"
+  }
+}

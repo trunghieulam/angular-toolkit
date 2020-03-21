@@ -1,0 +1,7 @@
+<app-header [ngClass]="{'app-hidden': !hasHeader}"></app-header>
+
+<router-outlet
+  (activate)='onActivate($event)'
+  (deactivate)='onDeactivate($event)'></router-outlet>
+
+<app-footer [ngClass]="{'app-hidden': !hasFooter}"></app-footer>

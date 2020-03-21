@@ -1,0 +1,26 @@
+<div class="header-module">
+  <div class="brand-container">
+    <img src="../../assets/imgs/icon.png" alt="" class="image">
+  </div>
+  <div class="functions-container">
+    <div class="lang-selections dropdown show">
+      <a
+        class="btn btn-light dropdown-toggle btn-lang" 
+        role="button"
+        data-toggle="dropdown"
+        aria-haspopup="false"
+        aria-expanded="false">
+        <img [src]="selectedLanguage.flagUrl" alt="" class="flag">
+      </a>
+    
+      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+        <ng-container *ngFor="let language of languages">
+          <a class="dropdown-item btn-lang" (click)="changeLanguage(language)" translate>
+            <img [src]="language.flagUrl" alt="" class="flag">
+            <span translate>{{ language.name }}</span>
+          </a>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>

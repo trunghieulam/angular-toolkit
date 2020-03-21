@@ -1,0 +1,29 @@
+.home-module {
+  min-height: calc(100vh - 112px);
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .greeting-container {
+    padding: 50px;
+
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    .texture {
+      font-size: 32px;
+      font-family: "Nunito Light";
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .btn {
+      padding: 10px 40px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
