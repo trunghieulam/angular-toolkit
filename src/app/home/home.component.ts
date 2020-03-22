@@ -186,13 +186,12 @@ export class HomeComponent implements OnInit {
     }
     // console.log("diagonalR", diagonalR);
 
-    let xAxisL = topV / this.selectedGrid.col;
+    let xAxisL = topV / this.selectedGrid.row;
     let yAxisL = leftH;
     while (xAxisL < this.selectedGrid.col - 1 && yAxisL !== 0) {
       xAxisL++;
       yAxisL--;
     }
-
     while (xAxisL >= 0 && yAxisL < this.selectedGrid.row) {
       diagonalL.push(this.gridCells[xAxisL * this.selectedGrid.row + yAxisL].state);
       xAxisL--;
