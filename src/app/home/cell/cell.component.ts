@@ -57,6 +57,7 @@ export class CellComponent implements OnInit {
           break;
       }
       this.endTurn.emit({
+        id: this.id,
         mod: this.mod,
         turn: this.turn,
       });

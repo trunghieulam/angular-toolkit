@@ -7,7 +7,10 @@
     "click-here": "Klikk her",
     "setting": "Innstilling",
     "grid-size": "Rutenettstørrelse",
-    "play-mod": "Spill Mod"
+    "play-mod": "Play Mod",
+    "end-game": "Spillets slutt.",
+    "red-win": "Rød spiller seier!",
+    "blue-win": "Blå spiller seier!"
   },
   "lang": {
     "en": "Engelsk",

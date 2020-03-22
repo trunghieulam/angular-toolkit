@@ -7,7 +7,10 @@
     "click-here": "Click vào đây",
     "setting": "Cài đặt",
     "grid-size": "Kích thước lưới",
-    "play-mod": "Cách chơi"
+    "play-mod": "Cách chơi",
+    "end-game": "Trò chơi kết thúc.",
+    "red-win": "Người chơi Đỏ thắng!",
+    "blue-win": "Người chơi Xanh thắng!"
   },
   "lang": {
     "en": "Tiếng Anh",
