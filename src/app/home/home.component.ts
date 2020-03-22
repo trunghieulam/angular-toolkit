@@ -43,8 +43,8 @@ export class HomeComponent implements OnInit {
   gridCells = [];
   DEFAULT_GRID = {
     id: 0,
-    col: 7,
-    row: 6
+    col: 8,
+    row: 8
   };
   selectedGrid: {
     id: number,
@@ -173,20 +173,20 @@ export class HomeComponent implements OnInit {
     }
     // console.log("vertical", vertical);
 
-    let xAxisR = topV / (this.selectedGrid.col - 1);
+    let xAxisR = topV / this.selectedGrid.row;
     let yAxisR = leftH;
     while (xAxisR !== 0 && yAxisR !== 0) {
       xAxisR--;
       yAxisR--;
     }
     while (xAxisR < this.selectedGrid.col && yAxisR < this.selectedGrid.row) {
-      diagonalR.push(this.gridCells[yAxisR + xAxisR * (this.selectedGrid.col - 1)].state);
+      diagonalR.push(this.gridCells[yAxisR + xAxisR * this.selectedGrid.row].state);
       xAxisR++;
       yAxisR++;
     }
     // console.log("diagonalR", diagonalR);
 
-    let xAxisL = topV / (this.selectedGrid.col - 1);
+    let xAxisL = topV / this.selectedGrid.col;
     let yAxisL = leftH;
     while (xAxisL < this.selectedGrid.col - 1 && yAxisL !== 0) {
       xAxisL++;
