@@ -144,50 +144,70 @@ export class HomeComponent implements OnInit {
     if (this.selectedMod == GAME_CONSTANTS.PLAY_MODS.DUAL_PLAY) {
       this.gridCells[event.id]['state'] = event.turn;
     }
-    this.checkMatchedAllGame();
+    this.isMatched(event.id, event.turn);
   }
 
-  isMatched(turn = GAME_CONSTANTS.PLAY_TURN.RED_TURN) {
+  isMatched(index, turn = GAME_CONSTANTS.PLAY_TURN.RED_TURN) {
     // there is a small number so just check the whole row and col with 2 diagonal lines of its index
-  }
 
-  checkMatchedAllGame() {
-    for (let i = 0; i < this.selectedGrid.row; i++) {
-      let target = [];
-      for (let j = 0; j < this.selectedGrid.col; j++) {
-        target.push(this.gridCells[(this.selectedGrid.col - 1) * j + i].state);
-      }
-      if (has4Nuts(target, GAME_CONSTANTS.PLAY_TURN.RED_TURN)) {
-        this.endMatch(GAME_CONSTANTS.PLAY_TURN.RED_TURN);
-        return;
-      }
-      if (has4Nuts(target, GAME_CONSTANTS.PLAY_TURN.BLUE_TURN)) {
-        this.endMatch(GAME_CONSTANTS.PLAY_TURN.BLUE_TURN);
-        return;
-      }
+    if (!index) {
+      return;
     }
 
+    // console.log("index", index);
+    let horizontal = [];
+    let vertical = [];
+    let diagonalR = [];
+    let diagonalL = [];
+
+    let topV = Math.floor(index / this.selectedGrid.row) * this.selectedGrid.row;
+    let endV = topV + this.selectedGrid.row;
+    for (let i = topV; i < endV; i++){
+      horizontal.push(this.gridCells[i].state)
+    }
+    // console.log("horizontal", horizontal);
+
+    let leftH = Math.floor(index % this.selectedGrid.row);
     for (let i = 0; i < this.selectedGrid.col; i++) {
-      let target = [];
-      for (let j = 0; j < this.selectedGrid.row; j++) {
-        target.push(this.gridCells[j + i * (this.selectedGrid.row)].state);
-      }
-      if (has4Nuts(target, GAME_CONSTANTS.PLAY_TURN.RED_TURN)) {
-        this.endMatch(GAME_CONSTANTS.PLAY_TURN.RED_TURN);
-        return;
-      }
-      if (has4Nuts(target, GAME_CONSTANTS.PLAY_TURN.BLUE_TURN)) {
-        this.endMatch(GAME_CONSTANTS.PLAY_TURN.BLUE_TURN);
-        return;
-      }
+      vertical.push(this.gridCells[leftH + i * this.selectedGrid.row].state);
+    }
+    // console.log("vertical", vertical);
+
+    let xAxisR = topV / (this.selectedGrid.col - 1);
+    let yAxisR = leftH;
+    while (xAxisR !== 0 && yAxisR !== 0) {
+      xAxisR--;
+      yAxisR--;
+    }
+    while (xAxisR < this.selectedGrid.col && yAxisR < this.selectedGrid.row) {
+      diagonalR.push(this.gridCells[yAxisR + xAxisR * (this.selectedGrid.col - 1)].state);
+      xAxisR++;
+      yAxisR++;
+    }
+    // console.log("diagonalR", diagonalR);
+
+    let xAxisL = topV / (this.selectedGrid.col - 1);
+    let yAxisL = leftH;
+    while (xAxisL < this.selectedGrid.col - 1 && yAxisL !== 0) {
+      xAxisL++;
+      yAxisL--;
     }
 
-    // check diagoal lines
-    this.checkDiagoalLines();
-  }
+    while (xAxisL >= 0 && yAxisL < this.selectedGrid.row) {
+      diagonalL.push(this.gridCells[xAxisL * this.selectedGrid.row + yAxisL].state);
+      xAxisL--;
+      yAxisL++;
+    }
+    // console.log("diagonalL", diagonalL);
 
-  checkDiagoalLines() {
-    // TODO:
+    if (
+        has4Nuts(horizontal, turn) ||
+        has4Nuts(vertical, turn) ||
+        has4Nuts(diagonalR, turn) ||
+        has4Nuts(diagonalL, turn)
+      ) {
+      this.endMatch(turn);
+    }
   }
 
   endMatch(winner = GAME_CONSTANTS.PLAY_TURN.RED_TURN) {
