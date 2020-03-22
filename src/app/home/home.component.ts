@@ -43,8 +43,8 @@ export class HomeComponent implements OnInit {
   gridCells = [];
   DEFAULT_GRID = {
     id: 0,
-    col: 8,
-    row: 8
+    col: 7,
+    row: 6
   };
   selectedGrid: {
     id: number,
