@@ -1,6 +1,44 @@
 <div class="home-module">
-  <div class="greeting-container">
-    <div class="texture" translate>home.write-your-application-here</div>
-    <button class="btn btn-primary" (click)="greeting()" translate>home.click-here</button>
+  
+  <div class="menu-bar">
+    <button class="btn btn-light" (click)="displaySetting()">
+      <fa-icon [icon]="faCog"></fa-icon>
+    </button>
   </div>
+
+  <div class="interact-container">
+    <div class="side-setting" [ngClass]="{'app-hidden': !openedSetting}">
+      <div class="title">Setting</div>
+      <div class="form-container">
+        <div class="form-group">
+          <label for="grid-size">Grid Size: </label>
+          <div class="size-selections dropdown show">
+            <a
+              class="btn btn-dark dropdown-toggle" 
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="false"
+              aria-expanded="false">
+              {{ selectedGrid.col }} x {{ selectedGrid.row }}
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+              <ng-container *ngFor="let option of gridOptions">
+                <a class="dropdown-item btn-option" (click)="changeGridSize(option)">
+                  {{ option.col }} x {{ option.row }}
+                </a>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="gaming-zone">
+      <div id="gridBoard" class="grid-board">
+        <ng-container *ngFor="let cell of gridCells">
+          <app-cell [id]="cell.id"></app-cell>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+
 </div>

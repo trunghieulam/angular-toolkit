@@ -14,7 +14,7 @@
 }
 
 .app-hidden {
-  display: none;
+  display: none !important;
 }
 
 /* Reusable */
@@ -29,12 +29,15 @@
   opacity: 1;
 }
 
+
+/* Override */
+
 body {
   font-family: "Nunito";
   color: #404040;
   margin: 0;
 }
 
-
-/* Override */
-
+label {
+  margin-bottom: 0;
+}

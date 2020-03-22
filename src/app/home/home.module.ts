@@ -6,12 +6,15 @@ import { HomeComponent } from './home.component';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpLoaderFactory } from '../shared/shared.module';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CellComponent } from './cell/cell.component';
 
 
 @NgModule({
-  declarations: [HomeComponent],
+  declarations: [HomeComponent, CellComponent],
   imports: [
     CommonModule,
+    FontAwesomeModule,
     TranslateModule.forChild({
       loader: {
         provide: TranslateLoader,
@@ -20,6 +23,9 @@ import { HttpLoaderFactory } from '../shared/shared.module';
       }
     }),
     HomeRoutingModule
+  ],
+  entryComponents: [
+    CellComponent
   ]
 })
 export class HomeModule { }

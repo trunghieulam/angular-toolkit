@@ -1,6 +1,6 @@
 {
-  "name": "Angular Toolkit",
-  "short_name": "Angular Toolkit",
+  "name": "Connect Four",
+  "short_name": "Connect4",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
   "display": "standalone",
