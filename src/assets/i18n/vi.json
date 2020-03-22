@@ -4,11 +4,18 @@
     "write-your-application-here": "Viết ứng dụng của bạn ở đây.",
     "greeting": "Chào mừng!",
     "greeting.message": "Xin chào!",
-    "click-here": "Click vào đây"
+    "click-here": "Click vào đây",
+    "setting": "Cài đặt",
+    "grid-size": "Kích thước lưới",
+    "play-mod": "Cách chơi"
   },
   "lang": {
     "en": "Tiếng Anh",
     "vi": "Tiếng Việt",
     "no": "Tiếng Na Uy"
+  },
+  "mod": {
+    "single": "Chơi Đơn",
+    "dual": "Chơi Đôi"
   }
 }

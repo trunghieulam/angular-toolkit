@@ -4,11 +4,18 @@
     "greeting": "Hilsen!",
     "greeting.message": "Hei der!",
     "write-your-application-here": "Skriv søknaden din her.",
-    "click-here": "Klikk her"
+    "click-here": "Klikk her",
+    "setting": "Innstilling",
+    "grid-size": "Rutenettstørrelse",
+    "play-mod": "Spill Mod"
   },
   "lang": {
     "en": "Engelsk",
     "vi": "Vietnamesisk",
     "no": "Norsk"
+  },
+  "mod": {
+    "single": "Enkeltspill",
+    "dual": "Dobbelt Spill"
   }
 }

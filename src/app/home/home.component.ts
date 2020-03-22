@@ -2,6 +2,7 @@ import { Component, OnInit, HostBinding } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
 import { faCog } from '@fortawesome/free-solid-svg-icons';
+import { GAME_CONSTANTS } from '../constants/game.constants';
 
 @Component({
   selector: 'app-home',
@@ -19,19 +20,16 @@ export class HomeComponent implements OnInit {
 
   /* CONTROLS */
   gridCells = [];
-
   DEFAULT_GRID = {
     id: 0,
     col: 7,
     row: 6
-  }
-
+  };
   selectedGrid: {
     id: number,
     col: number,
     row: number
   };
-
   gridOptions = [{
     id: 0,
     col: 7,
@@ -60,7 +58,15 @@ export class HomeComponent implements OnInit {
     id: 5,
     col: 8,
     row: 8
-  }]
+  }];
+
+  selectedMod: {
+    id: number,
+    name: string
+  };
+  mods = [];
+
+  turn = 0;
 
   @HostBinding('style.--rows') bindingRows;
 
@@ -69,13 +75,13 @@ export class HomeComponent implements OnInit {
     private toast: ToastrService
   ) {
     this.selectedGrid = this.DEFAULT_GRID;
+    this.mods.push(...[GAME_CONSTANTS.PLAY_MODS.SINGLE_PLAY, GAME_CONSTANTS.PLAY_MODS.DUAL_PLAY]);
+    this.selectedMod = GAME_CONSTANTS.PLAY_MODS.SINGLE_PLAY;
   }
 
   ngOnInit(): void {
     this.initGrid();
   }
-  
-
 
   initGrid(grid = this.DEFAULT_GRID) {
     this.gridCells = new Array(grid.col * grid.row);
@@ -94,7 +100,24 @@ export class HomeComponent implements OnInit {
     this.initGrid(option);
   }
 
+  changeMod(mod = null) {
+    if (!mod) {
+      return;
+    }
+
+    this.selectedMod = mod;
+    this.changeGridSize(this.selectedGrid);
+  }
+
   displaySetting() {
     this.openedSetting = !this.openedSetting;
+  }
+
+  cellEndTurn(event) {
+    this.turn = (event.turn + 1) % 2;
+  }
+
+  get currentMod() {
+    return this.selectedMod.id;
   }
 }

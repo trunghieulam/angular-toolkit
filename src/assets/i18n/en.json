@@ -4,11 +4,18 @@
     "greeting": "Greeting!",
     "greeting.message": "Hi there!",
     "write-your-application-here": "Write your application here.",
-    "click-here": "Click here"
+    "click-here": "Click here",
+    "setting": "Setting",
+    "grid-size": "Grid Size",
+    "play-mod": "Play Mod"
   },
   "lang": {
     "en": "English",
     "vi": "Vietnamese",
     "no": "Norwegian"
+  },
+  "mod": {
+    "single": "Single Play",
+    "dual": "Dual Play"
   }
 }
