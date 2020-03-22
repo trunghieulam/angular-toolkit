@@ -1,4 +1,8 @@
-# Angular Toolkit
+# Connect Four
+
+A mini game created by Alex (THLab) for interviewing based on his Angular Toolkit v9, running on [Connect 4](https://connect4.lamtrunghieu.com/home).
+
+## Angular Toolkit
 
 Angular Toolkit created by THLab, there is a boilerplate for beginning with:
 - Multi-language (ngx-translate)

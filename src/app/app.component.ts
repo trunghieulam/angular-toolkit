@@ -14,7 +14,7 @@ import no from '../assets/i18n/no.json';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'angular-toolkits';
+  title = 'Connect Four';
   hasHeader = true;
   hasFooter = true;
 
