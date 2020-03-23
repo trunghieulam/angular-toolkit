@@ -100,11 +100,12 @@
 
 @media only screen and (max-width: 768px) {
   .home-module {
-    .side-setting {
-      position: absolute;
-      max-width: unset;
-      background: white;
-      width: calc(100% - 40px);
+    .interact-container {
+      .side-setting {
+        position: absolute;
+        max-width: unset;
+        background: white;
+      }
     }
   }
 }
