@@ -9,6 +9,16 @@
   border-radius: 4px;
 
   cursor: pointer;
+  &:hover {
+    .round-container {
+      box-shadow: .5px .5px 1px 1px var(--self-color);
+      opacity: .6;
+      .nut {
+        background-color: var(--self-color);
+        opacity: .6;
+      }
+    }
+  }
   .round-container {
     width: 100%;
     border-radius: 100%;
@@ -31,4 +41,5 @@
 
 :host {
   --color: #ffffff;
+  --self-color: #ffffff;
 }

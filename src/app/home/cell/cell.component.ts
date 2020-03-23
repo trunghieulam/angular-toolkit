@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, HostBinding, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, HostBinding, Output, EventEmitter, SimpleChanges } from '@angular/core';
 import { GAME_CONSTANTS } from 'src/app/constants/game.constants';
 
 @Component({
@@ -8,16 +8,6 @@ import { GAME_CONSTANTS } from 'src/app/constants/game.constants';
 })
 export class CellComponent implements OnInit {
 
-  COLOR_WHITE = '#ffffff';
-  COLOR_RED = '#b71c1c';
-  COLOR_BLUE = '#1a237e';
-
-  RED_TURN = 0;
-  BLUE_TURN = 1;
-
-  SINGLE_PLAY = 0;
-  DUAL_PLAY = 1;
-
   @Input() id = 0;
   @Input() state = 0;
   @Input() mod = 0; // defaul is single play
@@ -26,12 +16,38 @@ export class CellComponent implements OnInit {
   @Output() endTurn: EventEmitter<any> = new EventEmitter();
 
   @HostBinding('style.--color') bindingColor;
+  @HostBinding('style.--self-color') bindingSelfColor;
 
   constructor() {
     this.bindingColor = GAME_CONSTANTS.COLOR_NUTS.COLOR_WHITE;
+    switch (this.turn) {
+      case GAME_CONSTANTS.PLAY_TURN.RED_TURN:
+        this.bindingSelfColor = GAME_CONSTANTS.COLOR_NUTS.COLOR_RED;
+        break;
+      case GAME_CONSTANTS.PLAY_TURN.BLUE_TURN:
+        this.bindingSelfColor = GAME_CONSTANTS.COLOR_NUTS.COLOR_BLUE;
+      default:
+        this.bindingSelfColor = GAME_CONSTANTS.COLOR_NUTS.COLOR_WHITE;
+        break;
+    }
   }
 
   ngOnInit(): void {
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes && changes.turn && changes.turn.currentValue) {
+      let turn = changes.turn.currentValue;
+      switch (turn) {
+        case GAME_CONSTANTS.PLAY_TURN.RED_TURN:
+          this.bindingSelfColor = GAME_CONSTANTS.COLOR_NUTS.COLOR_RED;
+          break;
+        case GAME_CONSTANTS.PLAY_TURN.BLUE_TURN:
+          this.bindingSelfColor = GAME_CONSTANTS.COLOR_NUTS.COLOR_BLUE;
+        default:
+          break;
+      }
+    }
   }
 
   changeState() {
@@ -48,10 +64,10 @@ export class CellComponent implements OnInit {
       }
     } else if (this.mod === GAME_CONSTANTS.PLAY_MODS.DUAL_PLAY.id && this.bindingColor == GAME_CONSTANTS.COLOR_NUTS.COLOR_WHITE) {
       switch (this.turn) {
-        case this.RED_TURN:
+        case GAME_CONSTANTS.PLAY_TURN.RED_TURN:
           this.bindingColor = GAME_CONSTANTS.COLOR_NUTS.COLOR_RED;
           break;
-        case this.BLUE_TURN:
+        case GAME_CONSTANTS.PLAY_TURN.BLUE_TURN:
           this.bindingColor = GAME_CONSTANTS.COLOR_NUTS.COLOR_BLUE;
         default:
           break;
