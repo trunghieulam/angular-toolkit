@@ -10,7 +10,9 @@
     "play-mod": "Cách chơi",
     "end-game": "Trò chơi kết thúc.",
     "red-win": "Người chơi Đỏ thắng!",
-    "blue-win": "Người chơi Xanh thắng!"
+    "blue-win": "Người chơi Xanh thắng!",
+    "no-win": "Không ai thắng!",
+    "final": "Kết thúc!"
   },
   "lang": {
     "en": "Tiếng Anh",

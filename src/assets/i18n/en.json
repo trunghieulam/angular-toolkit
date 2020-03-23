@@ -10,7 +10,9 @@
     "play-mod": "Play Mod",
     "end-game": "Game Ending.",
     "red-win": "Red player win!",
-    "blue-win": "Blue player win!"
+    "blue-win": "Blue player win!",
+    "no-win": "No one win!",
+    "final": "Final!"
   },
   "lang": {
     "en": "English",

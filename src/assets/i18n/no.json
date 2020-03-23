@@ -10,7 +10,9 @@
     "play-mod": "Play Mod",
     "end-game": "Spillets slutt.",
     "red-win": "Rød spiller seier!",
-    "blue-win": "Blå spiller seier!"
+    "blue-win": "Blå spiller seier!",
+    "no-win": "Ingen vinner!",
+    "final": "Endelig!"
   },
   "lang": {
     "en": "Engelsk",
