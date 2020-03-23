@@ -16,14 +16,16 @@ export class CellComponent implements OnInit {
   @Input()
   set turn(turn: number) {
     this._turn = turn;
-    switch (turn) {
-      case GAME_CONSTANTS.PLAY_TURN.RED_TURN:
-        this.bindingSelfColor = GAME_CONSTANTS.COLOR_NUTS.COLOR_RED;
-        break;
-      case GAME_CONSTANTS.PLAY_TURN.BLUE_TURN:
-        this.bindingSelfColor = GAME_CONSTANTS.COLOR_NUTS.COLOR_BLUE;
-      default:
-        break;
+    if (this.bindingColor === GAME_CONSTANTS.COLOR_NUTS.COLOR_WHITE) {
+      switch (turn) {
+        case GAME_CONSTANTS.PLAY_TURN.RED_TURN:
+          this.bindingSelfColor = GAME_CONSTANTS.COLOR_NUTS.COLOR_RED;
+          break;
+        case GAME_CONSTANTS.PLAY_TURN.BLUE_TURN:
+          this.bindingSelfColor = GAME_CONSTANTS.COLOR_NUTS.COLOR_BLUE;
+        default:
+          break;
+      }
     }
   }
   get turn() {
@@ -34,6 +36,7 @@ export class CellComponent implements OnInit {
 
   @HostBinding('style.--color') bindingColor;
   @HostBinding('style.--self-color') bindingSelfColor;
+  @HostBinding('style.--hover-opacity') bindingHoverOpacity;
 
   constructor() {
     this.bindingColor = GAME_CONSTANTS.COLOR_NUTS.COLOR_WHITE;
@@ -81,6 +84,9 @@ export class CellComponent implements OnInit {
         turn: this.turn,
       });
     }
+
+    this.bindingHoverOpacity = 1;
+    this.bindingSelfColor = this.bindingColor;
   }
 
 }
