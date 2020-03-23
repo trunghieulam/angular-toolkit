@@ -11,7 +11,24 @@ export class CellComponent implements OnInit {
   @Input() id = 0;
   @Input() state = 0;
   @Input() mod = 0; // defaul is single play
-  @Input() turn = 0;
+  
+  _turn = 0;
+  @Input()
+  set turn(turn: number) {
+    this._turn = turn;
+    switch (turn) {
+      case GAME_CONSTANTS.PLAY_TURN.RED_TURN:
+        this.bindingSelfColor = GAME_CONSTANTS.COLOR_NUTS.COLOR_RED;
+        break;
+      case GAME_CONSTANTS.PLAY_TURN.BLUE_TURN:
+        this.bindingSelfColor = GAME_CONSTANTS.COLOR_NUTS.COLOR_BLUE;
+      default:
+        break;
+    }
+  }
+  get turn() {
+    return this._turn;
+  }
 
   @Output() endTurn: EventEmitter<any> = new EventEmitter();
 
@@ -35,20 +52,6 @@ export class CellComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes && changes.turn && changes.turn.currentValue) {
-      let turn = changes.turn.currentValue;
-      switch (turn) {
-        case GAME_CONSTANTS.PLAY_TURN.RED_TURN:
-          this.bindingSelfColor = GAME_CONSTANTS.COLOR_NUTS.COLOR_RED;
-          break;
-        case GAME_CONSTANTS.PLAY_TURN.BLUE_TURN:
-          this.bindingSelfColor = GAME_CONSTANTS.COLOR_NUTS.COLOR_BLUE;
-        default:
-          break;
-      }
-    }
-  }
 
   changeState() {
     if (this.mod === GAME_CONSTANTS.PLAY_MODS.SINGLE_PLAY.id) {
