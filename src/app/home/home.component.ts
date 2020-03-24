@@ -144,8 +144,9 @@ export class HomeComponent implements OnInit {
     if (this.selectedMod == GAME_CONSTANTS.PLAY_MODS.DUAL_PLAY) {
       this.gridCells[event.id]['state'] = event.turn;
     }
-    this.checkAll();
-    this.isMatched(event.id, event.turn);
+    if (this.checkAll()) {
+      this.isMatched(event.id, event.turn);
+    }
   }
 
   checkAll() {
@@ -157,7 +158,10 @@ export class HomeComponent implements OnInit {
     if (minusOneNumber <= 0) {
       this.toast.success(this.translate.instant('home.no-win'), this.translate.instant('home.final'));
       this.initGrid(this.selectedGrid);
-    } 
+      return false;
+    }
+
+    return true;
   }
 
   isMatched(index, turn = GAME_CONSTANTS.PLAY_TURN.RED_TURN) {
