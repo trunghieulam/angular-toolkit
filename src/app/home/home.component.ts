@@ -168,15 +168,23 @@ export class HomeComponent implements OnInit {
             id++;
             result = this.dropNutOnColumn(id);
           } else {
-            this.isFalling = false;
-            this.checkTurnEnd(id);
+            this.setStaticNut(id);
             clearInterval(fallingAnimationInterval);
           }
         }, 110
       );
     } else {
-      this.isFalling = false;
-      this.checkTurnEnd(id);
+      this.setStaticNut(id);
+    }
+  }
+
+  setStaticNut(id) {
+    this.isFalling = false;
+    this.checkTurnEnd(id);
+    this.gridCells[id] = {
+      id: this.gridCells[id].id,
+      state: this.gridCells[id].state,
+      static: true
     }
   }
 

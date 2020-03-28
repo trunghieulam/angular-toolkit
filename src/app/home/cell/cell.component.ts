@@ -34,7 +34,8 @@ export class CellComponent implements OnInit {
 
   private _cell = {
     id: -1,
-    state: -1
+    state: -1,
+    static: false
   };
   @Input()
   set cell(cell: any) {
@@ -48,6 +49,10 @@ export class CellComponent implements OnInit {
 
   get cellState() {
     return this._cell.state;
+  }
+
+  get isStatic() {
+    return this._cell.static;
   }
 
   @Output() endTurn: EventEmitter<any> = new EventEmitter();
@@ -93,6 +98,11 @@ export class CellComponent implements OnInit {
         this.bindingColor = GAME_CONSTANTS.COLOR_NUTS.COLOR_BLUE;
       default:
         break;
+    }
+
+    if (this.isStatic) {
+      this.bindingHoverOpacity = 1;
+      this.bindingSelfColor = this.bindingColor;
     }
   }
 }
