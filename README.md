@@ -1,6 +1,6 @@
-# Connect Four
+# Caro Four
 
-A mini game created by Alex (THLab) for interviewing based on his Angular Toolkit v9, running on [Connect 4](https://connect4.lamtrunghieu.com/home).
+A mini game created by Alex (THLab) for interviewing based on his Angular Toolkit v9, running on [Connect 4](https://caro4.lamtrunghieu.com/home).
 
 ## Angular Toolkit
 

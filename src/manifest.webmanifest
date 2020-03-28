@@ -1,6 +1,6 @@
 {
-  "name": "Connect Four",
-  "short_name": "Connect4",
+  "name": "Caro Four",
+  "short_name": "Caro4",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
   "display": "standalone",
