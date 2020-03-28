@@ -20,6 +20,7 @@
     "no": "Tiếng Na Uy"
   },
   "mod": {
+    "debug": "Chế độ debug",
     "single": "Chơi Đơn",
     "dual": "Chơi Đôi"
   }

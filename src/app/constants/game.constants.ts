@@ -11,9 +11,9 @@ export const GAME_CONSTANTS = {
   },
 
   PLAY_MODS: {
-    SINGLE_PLAY: {
+    DEBUG_MODE: {
       id: 0,
-      name: 'mod.single'
+      name: 'mod.debug'
     },
     DUAL_PLAY: {
       id: 1,

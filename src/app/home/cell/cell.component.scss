@@ -31,7 +31,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
     .nut {
+      transition: .4s;
       background-color: var(--color);
       width: calc(100% - 2px);
       height: calc(100% - 2px);

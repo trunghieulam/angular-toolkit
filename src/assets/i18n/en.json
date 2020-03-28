@@ -20,6 +20,7 @@
     "no": "Norwegian"
   },
   "mod": {
+    "debug": "Debug mode",
     "single": "Single Play",
     "dual": "Dual Play"
   }

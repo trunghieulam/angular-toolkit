@@ -90,13 +90,14 @@ export class HomeComponent implements OnInit {
   turn = 0;
 
   @HostBinding('style.--rows') bindingRows;
+  isFalling = false;
 
   constructor(
     private translate: TranslateService,
     private toast: ToastrService
   ) {
     this.selectedGrid = this.DEFAULT_GRID;
-    this.mods.push(...[GAME_CONSTANTS.PLAY_MODS.SINGLE_PLAY, GAME_CONSTANTS.PLAY_MODS.DUAL_PLAY]);
+    this.mods.push(...[GAME_CONSTANTS.PLAY_MODS.DEBUG_MODE, GAME_CONSTANTS.PLAY_MODS.DUAL_PLAY]);
     this.selectedMod = GAME_CONSTANTS.PLAY_MODS.DUAL_PLAY;
   }
 
@@ -139,13 +140,69 @@ export class HomeComponent implements OnInit {
     this.openedSetting = !this.openedSetting;
   }
 
-  cellEndTurn(event) {
-    this.turn = (event.turn + 1) % 2;
-    if (this.selectedMod == GAME_CONSTANTS.PLAY_MODS.DUAL_PLAY) {
-      this.gridCells[event.id]['state'] = event.turn;
-    }
+  checkTurnEnd(id) {
+    let cell = this.gridCells[id];
     if (this.checkAll()) {
-      this.isMatched(event.id, event.turn);
+      this.isMatched(cell.id, cell.state);
+    }
+  }
+
+  onTurnEnd(event) {
+    if (this.isFalling) {
+      return;
+    }
+
+    this.turn = (event.turn + 1) % 2;
+    let cell = {
+      id: event.id,
+      state: event.turn
+    };
+    this.gridCells[event.id] = cell;
+    let id = event.id;
+    let result = this.dropNutOnColumn(id);
+    this.isFalling = true;
+    if (result) {
+      let fallingAnimationInterval = setInterval(
+        () => {
+          if (result) {
+            id++;
+            result = this.dropNutOnColumn(id);
+          } else {
+            this.isFalling = false;
+            this.checkTurnEnd(id);
+            clearInterval(fallingAnimationInterval);
+          }
+        }, 110
+      );
+    } else {
+      this.isFalling = false;
+      this.checkTurnEnd(id);
+    }
+  }
+
+  dropNutOnColumn(id = -1) {
+    if (id == -1) {
+      return false;
+    }
+
+    let topV = Math.floor(id / this.selectedGrid.row) * this.selectedGrid.row;
+    let endV = topV + this.selectedGrid.row;
+    let nextId = id + 1;
+
+    if (this.gridCells[id].state === -1 || nextId == endV || this.gridCells[nextId].state !== -1) {
+      return false;
+    } else {
+      let cell = {
+        id,
+        state: -1
+      }
+      let belowCell = {
+        id: nextId,
+        state: this.gridCells[id].state
+      }
+      this.gridCells[id] = cell;
+      this.gridCells[nextId] = belowCell;
+      return true;
     }
   }
 
@@ -171,7 +228,6 @@ export class HomeComponent implements OnInit {
       return;
     }
 
-    // console.log("index", index);
     let horizontal = [];
     let vertical = [];
     let diagonalR = [];
@@ -182,13 +238,11 @@ export class HomeComponent implements OnInit {
     for (let i = topV; i < endV; i++){
       horizontal.push(this.gridCells[i].state)
     }
-    // console.log("horizontal", horizontal);
 
     let leftH = Math.floor(index % this.selectedGrid.row);
     for (let i = 0; i < this.selectedGrid.col; i++) {
       vertical.push(this.gridCells[leftH + i * this.selectedGrid.row].state);
     }
-    // console.log("vertical", vertical);
 
     let xAxisR = topV / this.selectedGrid.row;
     let yAxisR = leftH;
@@ -201,7 +255,6 @@ export class HomeComponent implements OnInit {
       xAxisR++;
       yAxisR++;
     }
-    // console.log("diagonalR", diagonalR);
 
     let xAxisL = topV / this.selectedGrid.row;
     let yAxisL = leftH;
@@ -214,7 +267,6 @@ export class HomeComponent implements OnInit {
       xAxisL--;
       yAxisL++;
     }
-    // console.log("diagonalL", diagonalL);
 
     if (
         has4Nuts(horizontal, turn) ||

@@ -20,6 +20,7 @@
     "no": "Norsk"
   },
   "mod": {
+    "debug": "Feilsøkingsmodus",
     "single": "Enkeltspill",
     "dual": "Dobbelt Spill"
   }
