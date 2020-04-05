@@ -1,7 +1,7 @@
 .header-module {
   position: relative;
   height: 64px;
-  box-shadow: 0 .5px 1px rgba(0, 0, 0, .25);
+  box-shadow: 0 1.6px 3.6px 0 rgba(0,0,0,.132), 0 0.3px 0.9px 0 rgba(0,0,0,.108);
 
   display: flex;
 
@@ -20,7 +20,25 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    .btn-login {
+      color: white;
+      width: 120px;
+      background-color: #0b6a0b;
+      box-shadow: 0 6.4px 14.4px 0 rgba(0,0,0,.132), 0 1.2px 3.6px 0 rgba(0,0,0,.108);
+      margin-right: 20px;
+      &:hover {
+        background-color: #0e850e;
+      }
+    }
+    .btn-online {
+      color: white;
+      width: 120px;
+      background-color: #0e850e;
+      box-shadow: 0 6.4px 14.4px 0 rgba(0,0,0,.132), 0 1.2px 3.6px 0 rgba(0,0,0,.108);
+      margin-right: 20px;
+    }
     .lang-selections {
+      box-shadow: 0 6.4px 14.4px 0 rgba(0,0,0,.132), 0 1.2px 3.6px 0 rgba(0,0,0,.108);
       .btn-lang {
         display: flex;
         align-items: center;

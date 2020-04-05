@@ -1,0 +1,61 @@
+<div class="login-module">
+
+  <div class="lang-selections dropdown show">
+    <a
+      class="btn btn-transparent dropdown-toggle btn-lang" 
+      role="button"
+      data-toggle="dropdown"
+      aria-haspopup="false"
+      aria-expanded="false">
+      <img [src]="selectedLanguage.flagUrl" alt="" class="flag">
+    </a>
+  
+    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+      <ng-container *ngFor="let language of languages">
+        <a class="dropdown-item btn-lang" (click)="changeLanguage(language)" translate>
+          <img [src]="language.flagUrl" alt="" class="flag">
+          <span translate>{{ language.name }}</span>
+        </a>
+      </ng-container>
+    </div>
+  </div>
+
+  <div class="form-container">
+
+    <div class="icon-container noselect">
+      <img src="../../assets/imgs/icon.png" alt="" class="icon">
+    </div>
+
+    <form class="login-form noselect" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="email" translate>login.email_address</label>
+        <small *ngIf="email.errors && email.touched && email.errors.required" class="form-text text-warning" translate>login.email_address_required</small>
+        <small *ngIf="email.errors && email.touched && email.errors.email" class="form-text text-warning" translate>login.email_address_invalid</small>
+        <input
+          type="email"
+          class="form-control"
+          name="email"
+          aria-describedby="emailHelp"
+          formControlName="email"
+          [placeholder]="'login.email_address_placeholder' | translate">
+        <small class="form-text text-white" translate>login.email_address_help</small>
+      </div>
+      <div class="form-group">
+        <label for="password" translate>login.password</label>
+        <small *ngIf="password.errors && password.touched && password.errors.required" class="form-text text-warning" translate>login.password_required</small>
+        <small *ngIf="password.errors && password.touched && password.errors.minlength" class="form-text text-warning" translate>login.password_min_length</small>
+        <input
+          type="password"
+          class="form-control"
+          name="password"
+          formControlName="password"
+          [placeholder]="'login.password' | translate">
+      </div>
+      <button [disabled]="!loginForm.valid" type="submit" class="btn btn-dark btn-submit"  translate>login.submit</button>
+    </form>
+  </div>
+
+  <div class="cover-container">
+    <img src="../../assets/imgs/background_fog.png" alt="" class="cover">
+  </div>
+</div>

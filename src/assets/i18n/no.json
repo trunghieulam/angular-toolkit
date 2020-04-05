@@ -4,7 +4,21 @@
     "greeting": "Hilsen!",
     "greeting.message": "Hei der!",
     "write-your-application-here": "Skriv søknaden din her.",
-    "click-here": "Klikk her"
+    "click-here": "Klikk her",
+    "online": "På nett",
+    "login": "Logg Inn",
+    "login_success": "Logg inn vellykket"
+  },
+  "login": {
+    "email_address": "Epostadresse",
+    "email_address_placeholder": "Skriv inn e-post",
+    "email_address_help": "Vi vil aldri dele e-posten din med noen andre.",
+    "email_address_required": "E-post er påkrevd.",
+    "email_address_invalid": "E-postformatet er ikke gyldig.",
+    "password_required": "Passord er påkrevd.",
+    "password_min_length": "Passord min-lengde er 6 bokstaver.",
+    "password": "Passord",
+    "submit": "Sende inn"
   },
   "lang": {
     "en": "Engelsk",

@@ -3,6 +3,8 @@
     <img src="../../assets/imgs/icon.png" alt="" class="image">
   </div>
   <div class="functions-container">
+    <div *ngIf="!isValidated" class="btn btn-login" translate (click)="navigateTo('login')">home.login</div>
+    <div *ngIf="isValidated" class="btn btn-online" translate>home.online</div>
     <div class="lang-selections dropdown show">
       <a
         class="btn btn-light dropdown-toggle btn-lang" 

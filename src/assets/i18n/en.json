@@ -4,7 +4,21 @@
     "greeting": "Greeting!",
     "greeting.message": "Hi there!",
     "write-your-application-here": "Write your application here.",
-    "click-here": "Click here"
+    "click-here": "Click here",
+    "online": "Online",
+    "login": "Login",
+    "login_success": "Login successfully"
+  },
+  "login": {
+    "email_address": "Email address",
+    "email_address_placeholder": "Enter email",
+    "email_address_help": "We'll never share your email with anyone else.",
+    "email_address_required": "Email is required.",
+    "email_address_invalid": "Email format is not valid.",
+    "password_required": "Password is required.",
+    "password_min_length": "Password min-length is 6 letters.",
+    "password": "Password",
+    "submit": "Submit"
   },
   "lang": {
     "en": "English",

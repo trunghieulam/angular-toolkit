@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../core/auth/auth.service';
-import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class LoginComponent implements OnInit {
 
   DEFAUL_EN = {
     code: 'en',
@@ -32,10 +32,14 @@ export class HeaderComponent implements OnInit {
     flagUrl: '../../assets/imgs/flags/no.svg'
   }];
 
+  loginForm = new FormGroup({
+    email: new FormControl('', Validators.compose([Validators.required, Validators.email])),
+    password: new FormControl('', Validators.compose([Validators.required, Validators.minLength(6)])),
+  });
+
   constructor(
     private translateService: TranslateService,
-    private auth: AuthService,
-    private router: Router
+    private auth: AuthService
   ) {
     let language = localStorage.getItem('language');
     if (language) {
@@ -64,18 +68,13 @@ export class HeaderComponent implements OnInit {
     this.translateService.use(language.code);
   }
 
-  navigateTo(component = '') {
-    if (component && component !== '') {
-      this.router.navigate([component]);
-    }
+  onSubmit() {
+    this.auth.login(
+      this.loginForm.getRawValue()
+    );
   }
 
-  // You can test it by binding it to .btn-online button, <<  (click)="logout()"  >>
-  // logout() {
-  //   this.auth.logout();
-  // }
+  get email() { return this.loginForm.get('email'); }
 
-  get isValidated() {
-    return this.auth.isAuthenticated();
-  }
+  get password() { return this.loginForm.get('password'); }
 }

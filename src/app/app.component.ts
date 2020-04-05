@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
+import { CookieService } from 'ngx-cookie-service';
 
+import { version } from 'package.json';
 import { faTshirt } from '@fortawesome/free-solid-svg-icons';
 
 import en from '../assets/i18n/en.json';
@@ -22,6 +23,7 @@ export class AppComponent {
 
   constructor(
     private translate: TranslateService,
+    private cookie: CookieService
   ) {
     this.translate.setTranslation('en', en);
     this.translate.setTranslation('vi', vi);
@@ -29,6 +31,8 @@ export class AppComponent {
     this.translate.setDefaultLang('en');
 
     this.translate.use('en');
+
+    this.cookie.set('version', version);
   }
 
   onActivate(event: any = {}) {

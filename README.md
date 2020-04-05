@@ -1,6 +1,8 @@
 # Angular Toolkit
 
 Angular Toolkit created by THLab, there is a boilerplate for beginning with:
+- Authen flow (jwt - routing guard - auth navigating).
+- Local proxy (prevent CORS).
 - Multi-language (ngx-translate)
 - Lazy-loading modules.
 - Toast Service.
