@@ -10,6 +10,8 @@ Angular Toolkit created by THLab, there is a boilerplate for beginning with:
 - Common SEO meta tags.
 - Master layout with regular routing.
 
+A simple demo for Connect Four game in [branch game-connect4](https://github.com/trunghieulam/angular-toolkit/tree/game-connect4)
+
 Hope it can help you to build the amazing applications.
 
 ## Development server
