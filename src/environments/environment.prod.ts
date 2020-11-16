@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  serverUrl: 'https://api.your_domain.com'
+  serverUrl: 'https://api.lamtrunghieu.com'
 };

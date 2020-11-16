@@ -1,23 +1,19 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { LoginComponent } from './login/login.component';
-import { AuthGuard } from './core/guards/auth.guard';
+// import { AuthGuard } from './core/guards/auth.guard';
+import { LoginComponent } from './screens/login/login.component';
+import { PageNotFoundComponent } from './screens/page-not-found/page-not-found.component';
 
 
 const routes: Routes = [
   {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
+    path: '',
+    loadChildren: () => import('./screens/home/home.module').then(m => m.HomeModule),
+    // canActivate: [AuthGuard]
   },
   {
     path: 'login',
     component: LoginComponent
-  },
-  {
-    path: '',
-    redirectTo: '/home',
-    pathMatch: 'full'
   },
   {
     path: '**',
@@ -26,7 +22,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

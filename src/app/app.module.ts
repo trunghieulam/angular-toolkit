@@ -10,14 +10,15 @@ import { HttpLoaderFactory } from './shared/shared.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { LoginComponent } from './login/login.component';
 import { ApiPrefixInterceptor } from './core/interceptors/api-prefix.interceptor';
+
+import { FooterComponent } from './screens/layouts/footer/footer.component';
+import { HeaderComponent } from './screens/layouts/header/header.component';
+import { LoginComponent } from './screens/login/login.component';
+import { PageNotFoundComponent } from './screens/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [

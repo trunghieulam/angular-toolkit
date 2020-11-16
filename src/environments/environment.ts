@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  serverUrl: 'http://your_local_or_testing:port_api'
+  serverUrl: 'http://localhost:177'
 };
 
 /*
